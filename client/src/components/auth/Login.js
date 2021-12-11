@@ -23,7 +23,7 @@ const Login = ({ handleClick }) => {
           window.location.href = "/dashboard";
         } else {
           //validation
-          console.log(`else`);
+          console.log(`err`);
         }
       })
       .catch(err => console.log("err", err));

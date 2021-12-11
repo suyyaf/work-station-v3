@@ -25,14 +25,14 @@ const TaskForm = ({ refetch, tasks, setTasks }) => {
 
   const onSubmit = () => {
     if (title.length > 0) {
-      axios.post(URL, PARAMS, AXIOS_CONFIG).then(res => {
-        if (res.status === 200) {
-          let task = res.data.task;
-          setTasks([...tasks, task]);
-          setTitle("");
-          refetch();
-        }
-      });
+      axios
+        .post(URL, PARAMS, AXIOS_CONFIG)
+        .then(res => {
+          if (res.status === 200) {
+            setTitle("");
+          }
+        })
+        .then(() => refetch());
     }
   };
 

@@ -11,16 +11,14 @@ const AXIOS_CONFIG = {
 
 const TaskList = ({ refetch, tasks, setTasks }) => {
 
-    const toggleDone = (task) => {
-        axios.put(`${URL}/${task._id}`, {}, AXIOS_CONFIG)
+    const toggleDone = (id) => {
+        axios.put(`${URL}/${id}`, {}, AXIOS_CONFIG)
             .then(res => {
                 if (res.status === 200) {
-                    // console.log(`res`, res)
-                    let _tasks = tasks;
-                    setTasks(_tasks.filter(task => res.data.task._id !== task._id));
-                    refetch()
+                    console.log(`res`, res)
                 }
             })
+            .then(() => refetch())
             .catch(err => console.log(`err`, err))
     }
 
@@ -29,7 +27,7 @@ const TaskList = ({ refetch, tasks, setTasks }) => {
         {tasks.filter(task => !task.isCompleted).map(task => (
             <div className="border border-gray-400 p-4 rounded-md mb-4 flex justify-between items-center" key={task._id}>
                 {task.title}
-                <input type="button" onClick={() => toggleDone(task)} className="py-2 px-5 bg-green-400 text-white rounded-md cursor-pointer" value="DONE" />
+                <input type="button" onClick={() => toggleDone(task._id)} className="py-2 px-5 bg-green-400 text-white rounded-md cursor-pointer" value="DONE" />
             </div>
         ))}
 

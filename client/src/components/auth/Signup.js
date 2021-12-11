@@ -87,7 +87,7 @@ const Signup = ({ handleClick }) => {
       <div className="flex justify-between items-center">
         <div>
           <p>
-            Already a member?{" "}
+            Already a member?
             <span
               className="text-green-400 cursor-pointer"
               onClick={handleClick}
