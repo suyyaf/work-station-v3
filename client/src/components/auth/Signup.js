@@ -11,6 +11,7 @@ const Signup = ({ handleClick }) => {
   const onSubmit = () => {
     axios
       .post("http://localhost:5000/signup", {
+        // .post("https://work-station.herokuapp.com/signup", {
         username: username,
         email: email,
         password: password

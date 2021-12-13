@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 //import Task from "./TaskList";
 
+// const URL = "https://work-station.herokuapp.com/task";
 const URL = "http://localhost:5000/task";
 const AXIOS_CONFIG = {
   headers: {
@@ -12,15 +13,24 @@ const AXIOS_CONFIG = {
 
 const TaskForm = ({ refetch, tasks, setTasks }) => {
   const [title, setTitle] = useState("");
+  const [date, setDate] = useState("");
 
   const PARAMS = {
-    title: title
+    title: title,
+    date: new Date(date)
   };
 
   const handleChange = e => {
     e.preventDefault();
     const input = e.target.value;
     setTitle(input);
+  };
+
+  const handleChangeDate = e => {
+    console.log(`e.target.value`, e.target.value);
+    e.preventDefault();
+    const inputDate = e.target.value;
+    setDate(inputDate);
   };
 
   const onSubmit = () => {
@@ -37,17 +47,23 @@ const TaskForm = ({ refetch, tasks, setTasks }) => {
   };
 
   return (
-    <div className="flex justify-between mb-8">
+    <div className="justify-between mb-12">
       <input
-        className="w-full px-3 py-2 border border-green-400 rounded-md mr-4"
+        className="w-full px-3 py-2 border border-green-400 rounded-md mr-4 mb-4"
         type="text"
-        placeholder="Add Work Space..."
+        placeholder="Add Task..."
         onChange={e => handleChange(e)}
         value={title}
       />
       <input
+        className="w-full px-3 py-2 border border-green-400 rounded-md mr-4 mb-4"
+        type="datetime-local"
+        onChange={e => handleChangeDate(e)}
+        value={date}
+      />
+      <input
         type="button"
-        className="py-2 px-5 bg-green-400 text-white rounded-md cursor-pointer"
+        className="w-full py-2 px-5 bg-green-400 text-white rounded-md cursor-pointer"
         value="Add"
         onClick={() => onSubmit()}
       />

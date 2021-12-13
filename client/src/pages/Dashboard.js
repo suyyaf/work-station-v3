@@ -32,9 +32,11 @@ const Dashboard = () => {
   return (
     <> 
         <Navbar />
-        <div className="max-w-md mx-auto pt-12">
-            <h1 className="font-bold text-green-400 text-center text-xl mb-12">Work Space Dashboard</h1>
-            <TaskForm refetch={fetchTasks} tasks={taskList} setTasks={setTaskList}/>
+        <div className="container mb-24">
+            <h1 className="font-bold text-green-400 text-center text-xl py-12">Work Space Dashboard</h1>
+            <div className="max-w-lg mx-auto">
+              <TaskForm refetch={fetchTasks} tasks={taskList} setTasks={setTaskList}/>
+            </div>
             <TaskList refetch={fetchTasks} tasks={taskList} setTasks={setTaskList}/>
         </div>
     </>
