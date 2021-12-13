@@ -13,9 +13,6 @@ mongoose.connect(
   "mongodb+srv://suyyaf:12345@work-station.ditlo.mongodb.net/work-station"
 );
 
-//create localhost db (example workspace.db) beforehand using this if not using mongodb cluster
-// mongoose.connect("mongodb://localhost:27017/<db name>");
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
