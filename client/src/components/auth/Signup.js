@@ -22,7 +22,7 @@ const Signup = ({ handleClick }) => {
           const token = res.data.token;
           localStorage.setItem("token", token);
 
-          window.location.reload = "https://ws-client-frontend.herokuapp.com/";
+          window.location.reload();
         } else {
           //validation
           console.log(`else`);
